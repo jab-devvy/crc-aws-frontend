@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+        <title>Alex Bozeman - Home</title>
+        <style>
+            body {
+                padding-top: 2rem;
+            }
+            .divider {
+                border-top: 1px solid #ddd1d1; /* Adjust border style, color, and width as needed */
+                margin: 2rem 14rem; /* Add spacing above and below the divider */
+            }
+        </style>
+    </head>
+    <body>
+        <header class="container">
+            <nav>
+                <ul>
+                  <li><h1>Alex Bozeman</h1></li>
+                </ul>
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="resume.html">Resume</a></li>
+                  <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </nav>
+            <p>alexbozeman@protonmail.com | (555) 555-5555 | Beaufort, SC</p>
+            <p>Visitor Count: <span id="visitor-count">Loading...</span></p>
+        </header>
+        <div class="container"><hr /></div>
+        <main>
+            <div class="container">
+                <div class="grid">
+                    <figure>
+                        <img src="images/clouds.jpg" alt="Heavenly clouds with light rays emanating" style="width:400px;height:450px;"/>
+                        <figcaption><small><i>Unrelated picture of clouds I took</i></small></figcaption>
+                    </figure>
+                    <div>
+                        <h2>About Me</h2>
+                        <p>
+                            Hi there! My name is Alex. I've had a fascination with computers and IT as a whole since I was first able to use a Logitech trackball on my Dad's Power Macintosh G3.
+                            I really became interested in IT as a career after reading <a href="https://craphound.com/littlebrother/Cory_Doctorow_-_Little_Brother.pdf">Little Brother</a> by Cory Doctorow in middle school.
+                            It introduced me to Linux and the idea of hacker culture, and I promptly worked for months trying to defeat my school's locked down boot menu so that I could load an Ubuntu live CD and play games or something.
+                            I unfortunately was never able to accomplish this, or install the same CD onto my Mom's old iBook (I had yet to understand CPU architecture). Following this, 
+                            I took what were ultimately four very formative IT classes in high school (thanks Mr. Tokar!), and I've been hooked ever since. I have yet to have held an 'official' help desk or system admin position,
+                            but have somehow managed to apply my knowledge in pretty much every job I've had in some way.<br>
+                            My other interests/hobbies include music, animation, and looking at cool creatures I come across on walks.
+                        </p>
+                    </div>
+                </div>    
+            </div>
+        </main>
+        <script>
+            // Replace 'https://your-api-gateway-url' with your actual API Gateway URL
+            fetch('https://bh2ytsw9j4.execute-api.us-east-1.amazonaws.com')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('visitor-count').textContent = data.count;
+                })
+                .catch(error => {
+                    console.error('Error fetching visitor count:', error);
+                    document.getElementById('visitor-count').textContent = 'Error loading count';
+                });
+        </script>
+    </body>
+</html>
