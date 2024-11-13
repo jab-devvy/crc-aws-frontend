@@ -21,8 +21,7 @@ jobs:
           aws-region: us-east-1  # Replace with your AWS region
 
       - name: Sync files to S3 (excluding specific directories/files)
-        run: aws s3 sync . s3://abozeman-crc-staticsite-bucket --delete \
-             --exclude ".git/*" --exclude ".github/workflows/*" --exclude "README.md"
+        run: aws s3 sync . s3://abozeman-crc-staticsite-bucket --delete --exclude ".git/*" --exclude ".github/workflows/*" --exclude "README.md"
         env:
           AWS_DEFAULT_REGION: us-east-1  # Replace with your AWS region
 
