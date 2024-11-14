@@ -52,16 +52,22 @@
             </div>
         </main>
         <script>
-            // Replace 'https://your-api-gateway-url' with your actual API Gateway URL
-            fetch('https://kkm7m110gd.execute-api.us-east-1.amazonaws.com/dev/count')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('visitor-count').textContent = data.count;
-                })
-                .catch(error => {
-                    console.error('Error fetching visitor count:', error);
-                    document.getElementById('visitor-count').textContent = 'Error loading count';
-                });
+            // Replace 'https://your-api-gateway-url' with your actual API Gateway URL (check for typos)
+fetch('https://kkm7m110gd.execute-api.us-east-1.amazonaws.com/dev/count')
+  .then(response => {
+    // Check for successful response status code (usually 200)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    document.getElementById('visitor-count').textContent = data.count;
+  })
+  .catch(error => {
+    console.error('Error fetching visitor count:', error);
+    document.getElementById('visitor-count').textContent = 'Error loading count';
+  });
         </script>
     </body>
 </html>
