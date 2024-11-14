@@ -52,7 +52,6 @@
             </div>
         </main>
         <script>
-// Replace 'https://your-api-gateway-url' with your actual API Gateway URL
 fetch('https://ttjna94z2f.execute-api.us-east-1.amazonaws.com/dev/', {
   headers: {
     'origin': 'https://abozeman.net' // Replace '*' with your specific origin if needed
@@ -62,10 +61,13 @@ fetch('https://ttjna94z2f.execute-api.us-east-1.amazonaws.com/dev/', {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
-    return response.json();
+    // Removed `.json()` call
+    return response.text(); // Parse the response as text
   })
   .then(data => {
-    document.getElementById('visitor-count').textContent = data.count;
+    // Access the raw number directly
+    const visitorCount = parseInt(data, 10); // Parse the string to a number
+    document.getElementById('visitor-count').textContent = visitorCount;
   })
   .catch(error => {
     console.error('Error fetching visitor count:', error);
