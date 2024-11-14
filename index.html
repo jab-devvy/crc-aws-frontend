@@ -52,10 +52,13 @@
             </div>
         </main>
         <script>
-            // Replace 'https://your-api-gateway-url' with your actual API Gateway URL (check for typos)
-fetch('https://axdvnznbv5.execute-api.us-east-1.amazonaws.com')
+// Replace 'https://your-api-gateway-url' with your actual API Gateway URL
+fetch('https://kkm7m110gd.execute-api.us-east-1.amazonaws.com/dev/count', {
+  headers: {
+    'Access-Control-Allow-Origin': 'https://abozeman.net' // Replace '*' with your specific origin if needed
+  }
+})
   .then(response => {
-    // Check for successful response status code (usually 200)
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
